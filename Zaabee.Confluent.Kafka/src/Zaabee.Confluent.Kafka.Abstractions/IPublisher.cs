@@ -1,4 +1,4 @@
-namespace Zaabee.Kafka.Abstractions
+namespace Zaabee.Confluent.Kafka.Abstractions
 {
     public interface IPublisher
     {
