@@ -43,8 +43,8 @@ namespace Zaabee.Confluent.Kafka
                 {
                     p.Produce(topic, new Message<Null, string> {Value = i.ToString()}, r =>
                     {
-                        if (!r.Error.IsError) successful();
-                        else fail();
+                        if (!r.Error.IsError) successful?.Invoke();
+                        else fail?.Invoke();
                     });
                 }
 

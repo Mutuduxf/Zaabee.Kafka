@@ -1,7 +1,6 @@
-namespace Zaabee.Confluent.Kafka.Abstractions
-{
-    public interface IZaabeeKafkaClient : IPublisher, ISubseriber
-    {
+namespace Zaabee.Confluent.Kafka.Abstractions;
 
-    }
+public interface IZaabeeKafkaClient : IPublisher, ISubscriber
+{
+
 }
