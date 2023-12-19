@@ -1,6 +1,3 @@
 namespace Zaabee.Confluent.Kafka.Abstractions;
 
-public interface ISubscriber
-{
-        
-}
+public interface ISubscriber { }

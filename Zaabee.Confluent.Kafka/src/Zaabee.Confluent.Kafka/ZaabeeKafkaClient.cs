@@ -11,7 +11,12 @@ public class ZaabeeKafkaClient
         _consumerConfig = consumerConfig;
     }
 
-    public async Task PublishAsync<T>(string topic, T value, Action? successful = null, Action? fail = null)
+    public async Task PublishAsync<T>(
+        string topic,
+        T value,
+        Action? successful = null,
+        Action? fail = null
+    )
     {
         // If serializers are not specified, default serializers from
         // `Confluent.Kafka.Serializers` will be automatically used where
@@ -36,11 +41,17 @@ public class ZaabeeKafkaClient
         {
             for (var i = 0; i < 100; i++)
             {
-                p.Produce(topic, new Message<Null, string> { Value = i.ToString() }, r =>
-                {
-                    if (!r.Error.IsError) successful?.Invoke();
-                    else fail?.Invoke();
-                });
+                p.Produce(
+                    topic,
+                    new Message<Null, string> { Value = i.ToString() },
+                    r =>
+                    {
+                        if (!r.Error.IsError)
+                            successful?.Invoke();
+                        else
+                            fail?.Invoke();
+                    }
+                );
             }
 
             // wait for up to 10 seconds for any inflight messages to be delivered.
@@ -68,7 +79,9 @@ public class ZaabeeKafkaClient
                     try
                     {
                         var cr = c.Consume(cts.Token);
-                        Console.WriteLine($"Consumed message '{cr.Message.Value}' at: '{cr.TopicPartitionOffset}'.");
+                        Console.WriteLine(
+                            $"Consumed message '{cr.Message.Value}' at: '{cr.TopicPartitionOffset}'."
+                        );
                     }
                     catch (ConsumeException e)
                     {
