@@ -5,6 +5,7 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="Confluent.Kafka" Version="2.3.0" />
+		<PackageReference Include="Aoxe.Serializer.Abstractions" Version="2024.1.0" />
+		<PackageReference Include="Confluent.Kafka" Version="2.5.2" />
 	</ItemGroup>
 </Project>
